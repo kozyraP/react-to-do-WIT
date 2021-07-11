@@ -3,19 +3,33 @@ import LoginForm from './components/LoginForm';
 
 function App() {
     const adminUser = {
-      login: "admin@gmail.com",
-      password: "admin1234"
+      login: "admin",
+      password: "admin"
     }
 
     const[user, setUser] = useState({login: "", password: ""});
     const[error, setError] = useState("");
 
     const Login = details => {
-      console.log(details);
+
+      if(details.login == adminUser.login && details.password == adminUser.password){
+        console.log('logged in')
+        setUser({
+          login: details.login,
+          password: details.password
+        })
+    }
+    else {
+      setError("Wrong password!")
+    }
+  
     }
 
     const Logout = () => {
-      console.log("Logout");
+      setUser({
+        login: "",
+          password: ""
+      })
     }
 
   return (
@@ -23,10 +37,10 @@ function App() {
       {(user.login != "") ? (
       <div className="welcome">
         <h2>Welcome, <span>{user.login}</span></h2>
-        <button>Logout</button>
+        <button onClick={Logout}>Logout</button>
       </div>  
       ) : (
-        <LoginForm />
+        <LoginForm Login={Login} error={error} />
       )
     }
     </div>
