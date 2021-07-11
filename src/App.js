@@ -7,6 +7,26 @@ function App() {
       password: "admin"
     }
 
+    let items = [
+      {
+          id: 1,
+          text: 'Zrobić projekt z JS',
+          completed: false
+      },
+      {
+          id: 2,
+          text: 'Dokończyć projekt z Clouda',
+          completed: false
+      },
+      {
+          id: 3,
+          text: 'Dokończyć projekt z BI',
+          completed: false
+      }
+  ];
+
+  let title = 'To do';
+
     const[user, setUser] = useState({login: "", password: ""});
     const[error, setError] = useState("");
 
@@ -35,10 +55,25 @@ function App() {
   return (
     <div className="App">
       {(user.login != "") ? (
-      <div className="welcome">
-        <h2>Welcome, <span>{user.login}</span></h2>
-        <button onClick={Logout}>Logout</button>
-      </div>  
+      <div className="container">
+      <div className="row">
+          <div className="todolist">
+              <h1>{title.toUpperCase()}</h1>
+              <ul className="list-unstyled">
+                  {items.map(item => (
+                      <li key={item.id} className="ui-state-default">
+                          <div className="checkbox">
+                              <label>
+                                  <input type="checkbox" value=""/>
+                                  {item.text}
+                              </label>
+                          </div>
+                      </li>
+                  ))}
+              </ul>
+          </div>
+      </div>
+  </div>
       ) : (
         <LoginForm Login={Login} error={error} />
       )
