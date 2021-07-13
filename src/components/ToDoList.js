@@ -9,7 +9,7 @@ class ToDoList extends React.Component {
             {
                 id: 1,
                 text: 'Zrobić projekt z JS',
-                completed: false
+                completed: true
             },
             {
                 id: 2,
@@ -24,9 +24,15 @@ class ToDoList extends React.Component {
         ]
     }
 
+    deleteElement(id) {
+        const newElements = this.state.elements.filter(x => !(x.id == id))
+        this.setState({ elements: newElements })
+    }
+
+
     render() {
         const elements = this.state.elements.map(e => {
-            return <ToDoItem key={e.id} data={e} />
+            return <ToDoItem data={e} markClicked={this.deleteElement.bind(this)}/>
         })
         return (
             <div className="todolist">
