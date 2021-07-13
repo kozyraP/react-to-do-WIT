@@ -22,7 +22,8 @@ class ToDoList extends React.Component {
                 text: 'Dokończyć projekt z BI',
                 completed: false
             }
-        ]
+        ],
+        inputValue: ''
     }
 
     deleteElement(id) {
@@ -30,23 +31,45 @@ class ToDoList extends React.Component {
         this.setState({ elements: newElements })
     }
 
-    addElement() {
-console.log('test')
+    addItem() {
+        const item = {
+            id: Math.random(),
+            text: this.state.inputValue,
+            completed: false
+        }
+
+        const newElements = [...this.state.elements, item]
+        this.setState({ elements: newElements })
+        this.setState({ inputValue: '' })
+    }
+    inputHandler(event) {
+        const newValue = event.target.value
+        this.setState({ inputValue: newValue })
     }
 
 
     render() {
         const elements = this.state.elements.map(e => {
-            return <ToDoItem data={e} markClicked={this.deleteElement.bind(this)}/>
+            return <ToDoItem data={e} markClicked={this.deleteElement.bind(this)} />
         })
         return (
             <div className="todolist">
                 <Header title={'To do'} />
-                <AddItem clickButton={this.addElement.bind(this)}/>
+                <div>
+                    <input
+                        type="text"
+                        placeholder="Tutaj wpisz treść"
+                        value={this.state.inputValue}
+                        onChange={this.inputHandler.bind(this)}
+                    />
+                    <button onClick={this.addItem.bind(this)}>Dodaj</button>
+                </div>
                 <p />
                 <ul className="list-unstyled">
                     {elements}
                 </ul>
+
+                <button onClick={e => (window.location.reload())}>Wyloguj</button>
             </div>
         )
 
