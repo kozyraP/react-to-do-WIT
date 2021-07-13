@@ -39,8 +39,9 @@ function App() {
     <div className="App">
       {(user.login != "") ? (
         <ToDoList />
-      ) : (
+      ) : (<section className="login">
         <LoginForm Login={Login} error={error} />
+        </section>
       )
       }
     </div>

@@ -11,24 +11,28 @@ function LoginForm({ Login, error }) {
     }
 
     return (
-        <form onSubmit={submitHandler}>
+        <section className="login">
             <div className="loginContainer">
-                <h2>Login</h2>
-                {(error != "") ? (<div className="error">{error}</div>) : ""}
-            </div>
+                <form onSubmit={submitHandler}>
+                    <div >
+                        <h2>Zaloguj się do To Do listy</h2>
+                        {(error != "") ? (<div className="error">{error}</div>) : ""}
+                    </div>
 
-            <div>
-                <label htmlFor="login">Login: </label>
-                <input type="text" name="login" id="login" onChange={e => setDetails({ ...details, login: e.target.value })} value={details.login}></input>
-            </div>
-            <div>
-                <label htmlFor="password">Password: </label>
-                <input type="password" name="password" id="password" onChange={e => setDetails({ ...details, password: e.target.value })} value={details.password}></input>
-            </div>
-            <input type="submit" value="Login" />
+                    <div>
+                        <label htmlFor="login">Login:</label>
+                        <input type="text" name="login" id="login" onChange={e => setDetails({ ...details, login: e.target.value })} value={details.login}></input>
+                    </div>
+                    <div>
+                        <label htmlFor="password">Hasło: </label>
+                        <input type="password" name="password" id="password" onChange={e => setDetails({ ...details, password: e.target.value })} value={details.password}></input>
+                    </div>
+                    <p/>
+                    <input type="submit" value="Login" />
 
-        </form>
-
+                </form>
+            </div>
+        </section>
     )
 }
 

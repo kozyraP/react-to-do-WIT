@@ -8,9 +8,9 @@ export default function ToDoItem(props) {
             <div className="checkbox">
                 <label>
                     <input type="checkbox"
-                    id={data.id} 
-                    defaultChecked={data.completed}
-                    onChange={() => setChecked(!checked)} />
+                        id={data.id}
+                        defaultChecked={data.completed}
+                        onChange={() => setChecked(!checked)} />
                     {data.text}
                 </label>
                 <button onClick={() => props.markClicked(data.id)}>Usuń</button>
