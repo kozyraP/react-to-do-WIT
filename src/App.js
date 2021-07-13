@@ -8,25 +8,7 @@ function App() {
     password: "admin"
   }
 
-  let items = [
-    {
-      id: 1,
-      text: 'Zrobić projekt z JS',
-      completed: false
-    },
-    {
-      id: 2,
-      text: 'Dokończyć projekt z Clouda',
-      completed: false
-    },
-    {
-      id: 3,
-      text: 'Dokończyć projekt z BI',
-      completed: false
-    }
-  ];
 
-  let title = 'To do';
 
   const [user, setUser] = useState({ login: "", password: "" });
   const [error, setError] = useState("");
@@ -56,11 +38,7 @@ function App() {
   return (
     <div className="App">
       {(user.login != "") ? (
-        <div className="container">
-          <div className="row">
-            <ToDoList title={title} items={items} />
-          </div>
-        </div>
+        <ToDoList />
       ) : (
         <LoginForm Login={Login} error={error} />
       )
