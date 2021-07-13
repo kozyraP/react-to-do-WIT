@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './Header';
+import AddItem from './AddItem';
 import ToDoItem from './ToDoItem';
 
 class ToDoList extends React.Component {
@@ -29,6 +30,10 @@ class ToDoList extends React.Component {
         this.setState({ elements: newElements })
     }
 
+    addElement() {
+console.log('test')
+    }
+
 
     render() {
         const elements = this.state.elements.map(e => {
@@ -37,7 +42,8 @@ class ToDoList extends React.Component {
         return (
             <div className="todolist">
                 <Header title={'To do'} />
-
+                <AddItem clickButton={this.addElement.bind(this)}/>
+                <p />
                 <ul className="list-unstyled">
                     {elements}
                 </ul>
