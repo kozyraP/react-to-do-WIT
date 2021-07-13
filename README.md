@@ -1,3 +1,10 @@
+### Link do aplikacji na gitHub pages:
+https://kozyrap.github.io/react-to-do-WIT/
+.
+
+
+
+.
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
